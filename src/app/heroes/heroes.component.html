@@ -1,4 +1,5 @@
-<h2>Mes héros</h2>
+<h2>My Heroes</h2>
+
 <div>
   <label for="new-hero">Hero name: </label>
   <input id="new-hero" #heroName />
@@ -11,10 +12,10 @@
 
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{ hero.id }}">
-      <span class="badge">{{ hero.id }}</span> {{ hero.name }}
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
     </a>
     <button class="delete" title="delete hero"
-  (click)="delete(hero)">x</button>
+      (click)="delete(hero)">x</button>
   </li>
 </ul>

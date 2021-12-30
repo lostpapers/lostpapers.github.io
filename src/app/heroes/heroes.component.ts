@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroService } from '../hero.service';
+
 import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -14,15 +15,15 @@ export class HeroesComponent implements OnInit {
     private heroService: HeroService,
   ) {}
 
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+
   getHeroes(): void {
     this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
   }
 
-  ngOnInit(): void {
-    this.getHeroes();
-  }
-  add(name:string)
-  {
+  add(name: string): void {
     name = name.trim();
     if(name)
     {
@@ -31,7 +32,7 @@ export class HeroesComponent implements OnInit {
     }
   }
 
-  delete(hero:Hero){
+  delete(hero: Hero): void {
     this.heroes = this.heroes.filter(h=>h!==hero);
     /* If you neglect to subscribe(), the service will not send the delete request to the server. 
        As a rule, an Observable does nothing until something subscribes.
